@@ -41,6 +41,7 @@ class Config:
         work_month = []
         log_limit = 50
     elif mode.lower() == 'test':
+        template_output = os.path.join(folder_template, 'output.xlsx')
         support_email = 'blackday52@mail.ru'
         driver_path = r'/home/serj52/PycharmProjects/Soft/chromedriver'
         browser_path = r'/opt/google/chrome/google-chrome'

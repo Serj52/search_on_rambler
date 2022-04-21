@@ -3,6 +3,8 @@ import pandas as pd
 from business_selenium import Website
 from Galib.EXCEL import Excel
 from config import Config as cfg
+from datetime import datetime
+import shutil
 
 
 class Business:
@@ -16,8 +18,11 @@ class Business:
             for file in os.listdir(cfg.folder_input):
                 if self.excel.check_record(file):
                     print(f'В файле {file} есть записи')
-                    data = self.create_dataframe(file)
-                    self.web.work_with_site(data)
+                    input = self.create_dataframe(file)
+                    output = os.path.join(cfg.folder_template,
+                                          f'output {datetime.now().strftime("%d.%m.%Y %H-%M")}.xlsx')
+                    shutil.copyfile(cfg.template_output, output)
+                    self.web.work_with_site(input, output)
 
                 else:
                     print(f'В файле {file} нет записей. Перехожу к следующему')

@@ -92,6 +92,11 @@ class BaseSelenium:
             return self.conn.driver.find_element(By.XPATH, selector)
         return self.conn.driver.find_element(By.XPATH, selector)
 
+    def move_to_element(self, selector):
+        target = self.conn.driver.find_element(By.XPATH, selector)
+        actions = ActionChains(self.conn.driver)
+        actions.move_to_element(target)
+
     def download_file(self, selector, timeout=None):
         """в этом блоке скачивается файл"""
         lg.info('Начинаю загрузку данных')
@@ -102,13 +107,15 @@ class BaseSelenium:
         lg.info('Данные загружены')
         print(f'{datetime.now()} Данные загружены')
 
-
     def get_screen_shot(self, screen_path):
         """Сделать скриншот"""
         time.sleep(5)
         date = datetime.now().strftime("%d.%m.%Y %H-%M-%S")
         name = f'{date}.png'
         self.conn.driver.save_screenshot(os.path.join(screen_path, name))
+
+    def get_url(self):
+        return self.conn.driver.current_url
 
     def switch_to_active_tab(self):
         """переключиться на последнее открытое окно"""
