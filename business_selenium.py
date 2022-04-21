@@ -15,7 +15,7 @@ class Selenium(BaseSelenium):
     def exists_by_xpath(self, xpath):
         """Проверяет наличие элемента на странице"""
         try:
-            self.find_by_xpath(xpath)
+            self.find_element(xpath)
             return True
         except NoSuchElementException:
             return False

@@ -42,6 +42,6 @@ class Config:
         log_limit = 50
     elif mode.lower() == 'test':
         support_email = 'blackday52@mail.ru'
-        driver_path = r'C:\Users\Serj\PycharmProjects\Soft\chromedriver.exe'
-        browser_path = r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
+        driver_path = r'/home/serj52/PycharmProjects/Soft/chromedriver'
+        browser_path = r'/opt/google/chrome/google-chrome'
         log_limit = 10
